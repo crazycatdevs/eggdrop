@@ -150,6 +150,9 @@
 #   2 -> "2nd", 3 -> "3rd", 4 -> "4th", etc.
 #   else return <string>
 #
+# noaccent <string>
+#   returns <string> with accentued characters
+#   replaced with non-accentued (incomplete list)
 ########################################
 
 # So scripts can see if allt is loaded.
@@ -436,4 +439,9 @@ proc ordnumber {string} {
     return ${string}th
   }
   return $string
+}
+
+proc unaccent {string} {
+   set accmap [list À A Â A Ç C É E È E Ê E Ë E Î I Ï I Ô O Ö O Ù U à a â a ç c é e è e ê e ë e î i ï i ô o ö o ù u]
+   return [string map $accmap $string]
 }
